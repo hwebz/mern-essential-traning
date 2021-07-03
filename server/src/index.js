@@ -6,7 +6,7 @@ const app = express();
 const port = 5000;
 
 // mongo connection
-const mongoUri = proces.env.MONGO_URL || 'mongodb://localhost:27017/soccerDB';
+const mongoUri = process.env.MONGO_URL || 'mongodb://localhost:27017/soccerDB';
 mongoose.Promise = global.Promise;
 mongoose.connect(mongoUri, {
 	useNewUrlParser: true,
