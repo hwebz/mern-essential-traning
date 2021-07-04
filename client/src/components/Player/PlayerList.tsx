@@ -1,4 +1,7 @@
-const PlayerList = () => {
+const PlayerList = ({
+    players,
+    updateCurrentPlayer
+}: any) => {
     return (
         <h1>PlayerList</h1>
     );
