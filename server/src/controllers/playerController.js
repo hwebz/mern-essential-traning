@@ -31,3 +31,12 @@ export const getPlayers = (req, res) => {
         res.json(players);
     });
 };
+
+export const getPlayerWithID = (req, res) => {
+    Player.findById(req.params.PlayerId, (err, player) => {
+        if (err) {
+            res.send(err);
+        }
+        res.json(player);
+    });
+};
