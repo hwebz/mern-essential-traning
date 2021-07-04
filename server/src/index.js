@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
+import routes from './routes/soccerRoutes';
 
 const app = express();
 const port = 5000;
@@ -16,6 +17,8 @@ mongoose.connect(mongoUri, {
 // bodyparser setup
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+routes(app);
 
 app.get('/', (req, res) => {
 	res.send('Hello World 22222!')
