@@ -8,7 +8,7 @@ import PlayerSingle from './Player/PlayerSingle';
 
 const App = () => {
 	const [players, setPlayers] = useState<any[]>([]);
-	const [currentPlayer, setCurrentPlayer] = useState<any>({});
+	const [currentPlayer, setCurrentPlayer] = useState<any>();
 
 	const updateCurrentPlayer = (item: any) => setCurrentPlayer(item);
 
@@ -18,9 +18,15 @@ const App = () => {
 	}, [])
 
 	return (
-		<div className="App">
+		<div className="App">	
 			<div className="row">
-				<div className="col s12">Menu</div>
+				<nav>
+					<div className="nav-wrapper blue darken">
+						<div className="col s12">
+							<a href="/" className="brand-logo">Soccer Management</a>
+						</div>
+					</div>
+				</nav>
 			</div>
 			<div className="row">
 				<div className="col s3">
@@ -30,7 +36,9 @@ const App = () => {
 					/>
 				</div>
 				<div className="col s3">
-					<PlayerSingle />
+					<PlayerSingle
+						player={currentPlayer}
+					/>
 				</div>
 			</div>
 			<div className="row">
