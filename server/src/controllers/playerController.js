@@ -48,4 +48,16 @@ export const updatePlayer = (req, res) => {
         }
         res.json(player);
     });
-}
+};
+
+export const deletePlayer = (req, res) => {
+    Player.remove({ _id: req.params.PlayerId }, (err, player) => {
+        if (err) {
+            res.send(err);
+        }
+        res.json({
+            message: 'Successfully deleted player',
+            count: player.deletedCount
+        });
+    })
+};
