@@ -17,6 +17,21 @@ const App = () => {
 		axios.get(url).then((response: any) => setPlayers(response.data));
 	}, [])
 
+	const submitPlayer = (data: any) => {
+		axios
+			.post('/players', data)
+			.then((response) => {
+				console.log(response);
+				setPlayers((old) => ([
+					...old,
+					response.data
+				]))
+			})
+			.catch((err) => {
+				console.error(err);
+			})
+	}
+
 	return (
 		<div className="App">	
 			<div className="row">
@@ -35,7 +50,7 @@ const App = () => {
 						updateCurrentPlayer={updateCurrentPlayer}
 					/>
 				</div>
-				<div className="col s3">
+				<div className="col s9">
 					<PlayerSingle
 						player={currentPlayer}
 					/>
@@ -43,7 +58,9 @@ const App = () => {
 			</div>
 			<div className="row">
 				<div className="col s12">
-					<PlayerForm />
+					<PlayerForm
+						submitPlayer={submitPlayer}
+					/>
 				</div>
 			</div>
 		</div>
